@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="checknames:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="catchme-0.0.8-SNAPSHOT.war">
+      <element id="artifact" artifact-name="checknames:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:sf="http://www.springframework.org/tags/faces"
+       >
+
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Ofac scan - be compliant with the law</title>
+       <sf:includeStyles/>
+       <sf:resourceGroup/>
+<meta name="description" content="OFAC search, OFAC check and other compliance, AML, KYC, PATRIOT Act, free compliance software" />
+<meta name="keywords" content="OFAC,OFAC seach,OFAC check,SDN,know your customer,blocked countries, patriot act, kyc, database, money laundering, aml" />
+        
+        
+        <link href="css/menu.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+
+            .rich-message-marker img {
+                padding-right:7px;
+            }
+            .rich-message-label {
+                color:red;
+            }
+
+        </style>
+        <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-855570-4");
+pageTracker._trackPageview();
+} catch(err) {}</script> 
+         <ui:insert name="head"></ui:insert>  
+    </head>
+
+    
+    
+    <body>
+    <table width="900px" align="center">
+    <tr><td>
+          <img src="img/logo_green.gif">
+        
+</img>
+
+        <table width="100%px" align="center">
+            <tr>
+                <td align="center">
+                  <ui:include src="menu.html"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                     <ui:insert name="body">Default Body</ui:insert>
+                </td>
+            </tr>
+        </table>
+       
+        <br/>
+
+ <ui:include src="footer.html"/>
+    </td></tr>
+    </table>
+    </body>
+   
+</html>

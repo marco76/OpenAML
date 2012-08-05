@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	>
+	<!--
+		Document : ofac-data.xml Created on : March 5, 2009, 12:13 PM Author :
+		marcomolteni Description: Purpose of the document follows.
+	-->
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="ignoreUnresolvablePlaceholders" value="true"/>
+</bean>
+ <!-- 
+<bean class="org.springframework.web.context.support.ServletContextPropertyPlaceholderConfigurer">
+    <property name="ignoreResourceNotFound" value="true"/>
+    <property name="locations">
+    <list>
+    <value>classpath:application.properties</value>
+    <value>${config}</value>
+    </list>
+    </property>
+</bean>
+-->
+	<bean id="myProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+<property name="location" ref="propertyFile"/>
+</bean>
+
+<bean id="propertyUrl" class="org.springframework.jndi.JndiObjectFactoryBean">
+<property name="jndiName">
+	<value>java:comp/env/config</value>
+</property>
+</bean>
+
+<bean id="propertyFile" class="org.springframework.core.io.UrlResource">
+	<constructor-arg type="java.lang.String">
+		<ref bean="propertyUrl"/>
+	</constructor-arg>
+</bean>
+<bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+<property name="location">
+<ref bean="propertyFile"/>
+</property>
+</bean>
+
+		
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="jpaProperties">
+		<value>
+		  hibernate.dialect = org.hibernate.dialect.MySQLDialect
+		
+				hibernate.show_sql=${database.showSql}
+				hibernate.format_sql=true
+				hibernate.search.default.indexBase=${userPath}
+				hibernate.cache.provider_class=net.sf.ehcache.hibernate.SingletonEhCacheProvider
+				
+				hibernate.cache.use_query_cache=false
+				hibernate.cache.use_second_level_cache=false
+				hibernate.generate_statistics=true
+				hibernate.cache.provider_configuration_file_resource_path=ehcache.xml
+				hibernate.jdbc.batch_size=100
+		
+		
+		
+		</value>
+		</property>
+		<property name="persistenceUnitName" value="XMLReaderPU" />
+		
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql">
+					<value>${database.showSql}</value>
+				</property>
+				<property name="generateDdl">
+					<value>${database.generateDdl}</value>
+				</property>
+
+				<property name="database" value="MYSQL" />
+
+			</bean>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+		<property name="loadTimeWeaver">
+			<bean
+				class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+		</property>
+
+	</bean>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		
+		<property name="driverClassName">
+			<value>${database.driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>${database.url}</value>
+		</property>
+		<property name="username">
+			<value>${database.username}</value>
+		</property>
+		<property name="password">
+			<value>${database.password}</value>
+		</property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	
+		
+	</bean>
+	<tx:annotation-driven />
+
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+
+
+
+</beans>
+

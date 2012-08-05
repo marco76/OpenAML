@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      >
+
+
+<body>
+  <ui:composition template="/template.xhtml">
+   <ui:define name="body">
+     <f:view>
+             
+        
+        <h:form>
+        <h:commandLink action="#{listImportService.reloadLists}" value="Reload lists"/>
+        <br/>
+        <h:commandLink action="#{listImportService.parseUKFile}" value="Parse UK file"/>
+<br/>
+<h:commandLink action="#{listImportService.parseUSASenate}" value="Parse USA Senate file"/>
+<br/>
+<h:commandLink action="#{listImportService.parseUSACongress}" value="Parse USA Congress file"/>
+
+<br/>
+        <h:commandLink action="#{listImportService.parseOFACXml}" value="Parse OFAC file"/>
+
+<br/>
+        <h:commandLink action="#{indexService.manualReIndex}" value="Manual database index"/>
+        <h:commandLink action="#{indexService.manualReIndexPEP}" value="Manual database index pep"/>
+        
+        <br/>
+		
+        </h:form>
+  </f:view>
+            </ui:define>
+
+        </ui:composition>
+ </body>
+</html>
+

@@ -1,0 +1,241 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       >
+<div id="prices">
+<table id="pricetable">
+	<thead>
+		<tr>
+			<th style="color: rgb(102, 102, 102);" class="side">Monthly
+			price</th>
+			<th style="" class="choiceA">EUR 5</th>
+			<th style="" class="choiceB on">EUR 25</th>
+			<th style="" class="choiceC">EUR 95</th>
+			<th style="" class="choiceD">EUR 950</th>
+			<th style="" class="choiceE">Ask</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td class="side"></td>
+			<td style="" class="choiceA">
+			
+			<a
+				onclick="Richfaces.showModalPanel('panel');" href="#">
+				<img
+				src="./pages/prices_files/choose.gif" alt="Choose"/></a></td>
+			<td style="" class="choiceB on"><a
+				onclick="Richfaces.showModalPanel('panel');" href="#">
+				<img
+				src="./pages/prices_files/choose.gif" alt="Choose"/></a></td>
+			<td style="" class="choiceC"><a
+				onclick="Richfaces.showModalPanel('panel');" href="#">
+				<img
+				src="./pages/prices_files/choose.gif" alt="Choose"/></a></td>
+			<td style="" class="choiceD"><a
+				onclick="Richfaces.showModalPanel('panel');" href="#">
+				<img
+				src="./pages/prices_files/choose.gif" alt="Choose"/></a></td>
+			<td style="" class="choiceE"><a
+				onclick="Richfaces.showModalPanel('panel');" href="#"
+				><img
+				src="./pages/prices_files/choose.gif" alt="Choose"/></a></td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td class="side">Package name</td>
+			<td style="" class="choiceA">Individual</td>
+			<td style="" class="choiceB on">Small 1</td>
+			<td style="" class="choiceC">Small 2</td>
+			<td style="" class="choiceD">Medium 1</td>
+			<td style="" class="choiceE">Big 1</td>
+		</tr>
+		<tr>
+			<td class="side">Searches/month full result</td>
+			<td style="" class="choiceA">50</td>
+			<td style="" class="choiceB on">350</td>
+			<td style="" class="choiceC">1500</td>
+			<td style="" class="choiceD">Unlimited</td>
+			<td style="" class="choiceE">Unlimited</td>
+		</tr>
+		<tr>
+			<td class="side">PEP - Politically exposed persons</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on" ><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceC"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceD"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">Excel scan</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceD"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">WebServices</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceD"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">Dedicated server</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"></td>
+			<td style="" class="choiceD"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">Good guy list</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"></td>
+			<td style="" class="choiceD"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">Your lists</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"/>
+			<td style="" class="choiceD"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">WorldCheck lists support</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"></td>
+			<td style="" class="choiceD"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">Real time answer</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"></td>
+			<td style="" class="choiceD"></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">On site server</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"></td>
+			<td style="" class="choiceD"></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">SWIFT messages</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"></td>
+			<td style="" class="choiceD"></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+	
+		<tr>
+			<td class="side">Code source</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"></td>
+			<td style="" class="choiceD"></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+		<tr>
+			<td class="side">Customized solution</td>
+			<td style="" class="choiceA"><br/>
+			</td>
+			<td style="" class="choiceB on"><br/>
+			</td>
+			<td style="" class="choiceC"></td>
+			<td style="" class="choiceD"></td>
+			<td style="" class="choiceE"><img
+				src="./pages/prices_files/check.png" alt="yes"/></td>
+		</tr>
+	</tbody>
+</table>
+<rich:modalPanel id="panel" width="400" height="300">
+
+        <f:facet name="header">
+
+            <h:outputText value="Information request form"/>
+            
+
+        </f:facet>
+        <h:form>
+        <h:panelGrid columns="2">
+         <h:outputText value="Name" /><h:inputText value="#{prospectMB.name}" />
+         <h:outputText value="Family Name" /><h:inputText value="#{prospectMB.familyName}" />
+         <h:outputText value="Company" /><h:inputText value="#{prospectMB.company}" />
+         <h:outputText value="Address" /><h:inputTextarea value="#{prospectMB.address}" />
+         <h:outputText value="City" /><h:inputText value="#{prospectMB.city}" />
+         <h:outputText value="Country" /><h:inputText value="#{prospectMB.country}" />
+         <h:outputText value="E-mail" /><h:inputText value="#{prospectMB.email}" />
+         <h:commandButton action="#{prospectMB.saveProspect}" value="Submit" />
+         <h:commandButton  value="Close" onclick="Richfaces.hideModalPanel('panel');"/>
+         
+        </h:panelGrid>
+        </h:form>
+        <h:panelGrid columns="2">
+        
+        </h:panelGrid>
+        <center>
+        <a onclick="Richfaces.hideModalPanel('panel');" href="#">Close form</a>
+		</center>
+
+    </rich:modalPanel>
+</div>
+</html>

@@ -1,0 +1,6 @@
+searchName=Search name
+javax.faces.validator.LengthValidator.MINIMUM = At least {0} characters are required.
+javax.faces.component.UIInput.REQUIRED=Please enter a value for this field.
+javax.faces.converter.DateTimeConverter.DATE=Please enter a valid date. 
+javax.faces.converter.DateTimeConverter.DATE_detail=Please enter a valid date. Example: {1}
+welcome_subscribeToSeeAll=Subscribe our services to see the complete result\!

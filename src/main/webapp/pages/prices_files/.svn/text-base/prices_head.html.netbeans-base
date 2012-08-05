@@ -1,0 +1,111 @@
+<style type="text/css">
+.a img {border:0;vertical-align:text-bottom;}
+#prices table {border-collapse:collapse;}
+#prices th.side {
+background: transparent url(./pages/prices_files/img/bg_th_side.gif) no-repeat bottom left;
+}
+#prices td.side {
+text-align:right;
+background: transparent url(./pages/prices_files/img/bg_td_side.gif) no-repeat bottom left;
+width:160px;
+font:bold 10px/13px verdana;
+color:#6e6f37;
+padding-right:8px;
+}
+#prices th {
+height:64px;
+border-right:1px solid #fff;
+vertical-align:bottom;
+color:#fff;
+font:normal 19px/25px arial;
+letter-spacing:2px;
+background:transparent url(./pages/prices_files/img/bg_th.gif) no-repeat bottom left;
+}
+#prices td {
+text-align:center;
+background:transparent url(./pages/prices_files/img/bg_td.gif) no-repeat bottom left;
+border-right:1px solid #fff;
+color:#fff;
+width:95px;
+height:30px;
+font:bold 10px/16px verdana;
+}
+#prices td.on {background:transparent url(./pages/prices_files/img/bg_td_on.gif) no-repeat bottom left;}
+#prices th.on {
+background:transparent url(./pages/prices_files/img/bg_th_on.gif) no-repeat bottom left;
+padding-bottom:9px;
+width:148px;
+}
+tfoot td {
+background:transparent url(./pages/prices_files/img/bg_foot_td.gif) no-repeat top left;
+height:64px;
+vertical-align:top;
+padding-top:8px;
+}
+tfoot td.on {
+background:transparent url(./pages/prices_files/img/bg_foot_td_on.gif) no-repeat top left;
+padding-top:16px;
+}
+
+tfoot td.side {background: transparent url(./pages/prices_files/img/bg_foot_td_side.gif) no-repeat top left;}
+#formcontainer {
+width:443px;
+height:239px;
+background:transparent url(./pages/prices_files/img/bg_form.gif) no-repeat top left;
+position:absolute;
+top:24px;
+left:341px;
+}
+#formcontainer form {
+padding:8px 10px;
+margin:0;
+}
+#formcontainer h2 {
+margin:0;
+padding:0 0 14px 0;
+font:bold 21px/27px arial;
+color:#fff;
+}
+#formcontainer fieldset {
+border:none;
+padding:0;
+}
+#formcontainer label {
+display:block;
+float:left;
+font:bold 12px/18px verdana;
+color:#fff;
+padding-bottom:12px;
+}
+#formcontainer label.email {
+width:350px;
+}
+#formcontainer label.email input {
+width:340px;
+}
+#formcontainer label.password {
+clear:left;
+padding-right:40px;
+}
+#formcontainer label.password input,
+#formcontainer label.retype input {
+width:150px;
+}
+#formcontainer fieldset.buttons {
+padding-top:10px;
+clear:left;
+}
+#prices {
+position:relative;
+}
+</style>
+<!-- because ie is a little different with its positioning... --><!--[if lte IE 8]>
+<style type="text/css">
+#formcontainer {
+top:34px;
+}
+</style>
+<![endif]-->
+ 
+
+

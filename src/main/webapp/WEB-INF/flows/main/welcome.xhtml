@@ -1,0 +1,262 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+	
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:sf="http://www.springframework.org/tags/faces"
+	 template="/WEB-INF/layouts/template.xhtml">
+	
+	
+		<ui:define name="body">
+				
+					<ui:fragment id="searchForm">
+					<f:loadBundle basename="ch.genidea.resources.MessageResource"
+						var="msg" />
+						
+					<rich:panel>
+						<h:form id="searchForm">
+							<br />
+							<table align="center">
+								<tr>
+									<td>
+										<div class="input">
+									<h:inputText style="font-size:20px; border=none" size="50"
+											value="#{searchCriteria.searchString}" id="searchString" required="true" styleClass="">
+											<f:validateLength minimum="2" maximum="50" />
+											<rich:ajaxValidator event="onblur" />
+										</h:inputText>
+						</div>
+									</td>
+									<td>
+										<div class="buttonGroup">
+						<sf:commandButton id="findSdn" value="Search name" processIds="*" action="search" />
+					</div>
+									
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<rich:message for="personName" />
+									</td>
+								</tr>
+							
+							<tr>
+								<td>
+									<h:selectBooleanCheckbox title="fuzzy"
+										value="#{personMB.fuzzySearch}" />
+									<h:outputText value="Approximate search" />
+									<h:selectBooleanCheckbox title="pep"
+										value="#{personMB.pepSearch}" />
+									<h:outputText value="PEP search" />
+								</td>
+							</tr>
+						</table>
+						</h:form>
+					</rich:panel>
+					<table><tr><td>
+					Showed results:
+					<h:outputText value="#{personMB.resultShowed}" />
+					|
+					Total results:
+					<h:outputText value="#{personMB.resultTotal}" />
+					</td></tr></table>
+					</ui:fragment>
+					<ui:fragment id="resultSearch">
+					<br />
+					<br />
+					<b> Free search limited to 3 results </b>
+					<table width="90%">
+						<tr>
+							<td valign="top">
+								<rich:panel style="background-color:white">
+									<f:facet name="header">
+
+										SDN result
+
+        </f:facet>
+
+
+									<rich:dataTable value="#{entries}"
+										var="entry" onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+										onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+										cellpadding="0" cellspacing="0">
+
+										<rich:column width="10">
+											<f:facet name="header">
+												<h:outputText value="UID" />
+											</f:facet>
+											<h:outputText value="#{entry.uid}" />
+
+										</rich:column>
+										<rich:column width="50">
+											<f:facet name="header">
+												<h:outputText value="List" />
+											</f:facet>
+											<h:outputText value="#{entry.sourceList.name}" />
+										</rich:column>
+
+										<rich:column width="30">
+											<f:facet name="header">
+												<h:outputText value="First name" />
+											</f:facet>
+											<h:outputText value="#{entry.firstName}" />
+										</rich:column>
+										<rich:column width="100">
+											<f:facet name="header">
+												<h:outputText value="Family name" />
+											</f:facet>
+											<h:outputText value="#{entry.familyName}" />
+
+										</rich:column>
+										<rich:column width="100">
+											<f:facet name="header">
+												<h:outputText value="All names" />
+											</f:facet>
+											<h:outputText value="#{entry.allNames}" />
+
+										</rich:column>
+										<rich:column width="20">
+											<f:facet name="header">
+												<h:outputText value="Country of origin" />
+											</f:facet>
+											<h:outputText value="#{entry.countryOfOrigin}" />
+
+										</rich:column>
+										<rich:column width="20">
+											<f:facet name="header">
+												<h:outputText value="Country of residence" />
+											</f:facet>
+											<h:outputText value="#{entry.countryOfResidence}" />
+
+										</rich:column>
+									</rich:dataTable>
+
+								</rich:panel>
+								<br />
+								<rich:panel rendered="#{personMB.pepSearch}" style="background-color:white">
+									<f:facet name="header">
+
+										PEP result
+
+        </f:facet>
+									<table>
+										<tr>
+											<td valign="top">
+												<rich:dataTable value="#{entries}"
+													var="entry" onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+													onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+													cellpadding="0" cellspacing="0">
+
+													<rich:column width="10">
+														<f:facet name="header">
+															<h:outputText value="UID" />
+														</f:facet>
+														<h:outputText value="#{entry.uid}" />
+
+													</rich:column>
+													<rich:column width="50">
+														<f:facet name="header">
+															<h:outputText value="List" />
+														</f:facet>
+														<h:outputText value="#{entry.sourceList.name}" />
+													</rich:column>
+
+													<rich:column width="30">
+														<f:facet name="header">
+															<h:outputText value="First Name" />
+														</f:facet>
+														<h:outputText value="#{entry.firstName}" />
+													</rich:column>
+													<rich:column width="100">
+														<f:facet name="header">
+															<h:outputText value="Family Name" />
+														</f:facet>
+														<h:outputText value="#{entry.familyName}" />
+
+													</rich:column>
+													<rich:column width="100">
+														<f:facet name="header">
+															<h:outputText value="All names" />
+														</f:facet>
+														<h:outputText value="#{entry.allNames}" />
+
+													</rich:column>
+													<rich:column width="50">
+														<f:facet name="header">
+															<h:outputText value="County/Region" />
+														</f:facet>
+														<h:outputText value="#{entry.county}" />
+
+													</rich:column>
+
+												</rich:dataTable>
+
+											</td>
+										</tr>
+									</table>
+								</rich:panel>
+							</td>
+
+							<td valign="top">
+
+								<rich:panel style="background-color:white">
+									<f:facet name="header">
+
+										Lists available
+
+        </f:facet>
+									<rich:dataTable value="#{sourceListService.lists}"
+										var="list">
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="List name" />
+											</f:facet>
+											<h:outputText value="#{list.name}" />
+										</h:column>
+
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Records" />
+											</f:facet>
+											<h:outputText value="#{list.noOfRecordsImported}" />
+
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Updated" />
+											</f:facet>
+											<h:outputText value="#{list.lastImported}" />
+
+										</h:column>
+
+									</rich:dataTable>
+								</rich:panel>
+							</td>
+
+
+						</tr>
+					</table>
+					<br />
+
+
+					<b>
+						<h:outputText value="#{msg.welcome_subscribeToSeeAll}"
+							rendered="#{personMB.resultShowedLimited}" />
+					</b>
+					<br />
+					<br />
+					<br />
+					Search time:
+					<h:outputText value="#{personMB.timeToSearch}" />
+					/ Searches per second:
+					<h:outputText value="#{personMB.requestsPerSecond}" />
+					<br />
+					Hardware: VM Machine, 700MB RAM, 2GB HD, AMD 2.8 GHz, 1 CPU
+					</ui:fragment>
+				
+			</ui:define>
+
+		</ui:composition>

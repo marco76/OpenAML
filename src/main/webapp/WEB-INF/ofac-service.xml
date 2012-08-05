@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.5.xsd"
+           
+             default-autowire="autodetect">
+
+
+<bean id ="simpleQuery" class="ch.genidea.checknames.service.SimpleQueryImpl">
+</bean>
+
+<bean name ="uploadUtility" class ="ch.genidea.checknames.utility.UploadFileUtility"/>
+<bean id="listEntryDao" class="ch.genidea.checknames.dao.ListEntryDaoJpaImpl" />
+<bean id="pepEntryDao" class="ch.genidea.checknames.dao.PEPEntryDaoJpaImpl" />
+<bean id="prospectDao" class="ch.genidea.checknames.dao.ProspectDaoJpaImpl"/>
+
+<bean id="sourceListDao" class="ch.genidea.checknames.dao.SourceListDaoJpaImpl"/>
+
+<bean id="entityListService" class="ch.genidea.checknames.service.ListEntryServiceImpl">
+    <property name="listEntryDao" ref="listEntryDao"/>
+</bean>
+<bean id="pepListService" class="ch.genidea.checknames.service.PEPEntryServiceImpl">
+    <property name="pepEntryDao" ref="pepEntryDao"/>
+</bean>
+<bean id="sourceListService" class="ch.genidea.checknames.service.SourceListServiceImpl">
+    <property name="sourceListDao" ref="sourceListDao"/>
+</bean>
+<bean id = "prospectService" class="ch.genidea.checknames.service.ProspectServiceImpl">
+	<property name="dao" ref ="prospectDao"/>
+</bean>
+<bean id="properties" class="ch.genidea.checknames.utility.VariablesContainer">
+           			<property name="filePath"> <value>${userPath}</value></property>
+           			
+           </bean>
+	
+
+<bean name = "listImportService" class="ch.genidea.checknames.individualLists.service.ListImportServiceImpl">
+     <property name="sourceListService" ref="sourceListService"/>
+    <property name="service" ref="entityListService"/>
+    <property name="pepService" ref="pepListService"/>
+    <property name="upload" ref="uploadUtility" />
+    <property name="variables" ref="properties" />
+    <property name="ofacParser" ref="ofacParser"></property>
+  
+</bean>
+ 
+<bean id = "indexService" class="ch.genidea.checknames.service.IndexServiceImpl">
+</bean>
+
+<bean name ="personMB" class="ch.genidea.ofac.web.jsf.managedBean.PersonMB" scope="request">
+  <property name="simpleQuery" ref="simpleQuery"/>
+</bean>
+<bean name ="prospectMB" class="ch.genidea.ofac.web.jsf.managedBean.ProspectMB" scope="request">
+<property name="service" ref="prospectService" />
+</bean>
+<bean name ="loginMB" class="ch.genidea.ofac.web.jsf.managedBean.LoginMB" scope="request"/>
+<bean name ="searchLogService" class="ch.genidea.checknames.service.SearchLogServiceImpl">
+<property name="dao" ref="searchLogDao"></property>
+</bean>
+<bean name = "searchLogDao" class="ch.genidea.checknames.dao.SearchLogDaoJpaImpl" />
+<bean name = "searchResultService" class="ch.genidea.checknames.service.SearchResultServiceImpl">
+<property name="simpleQuery" ref="simpleQuery" />
+</bean>
+
+<lang:groovy id="ofacParser" script-source="classpath:ch/genidea/checknames/importer/OFACParserImpl.groovy">
+ </lang:groovy>
+
+ </beans>

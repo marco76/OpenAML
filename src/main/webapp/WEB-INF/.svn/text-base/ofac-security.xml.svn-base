@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
+<http auto-config="true">
+   <intercept-url pattern="/admin*" access="ROLE_ADMIN" />
+   <intercept-url
+			pattern="/login*"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+   
+<form-login
+			login-processing-url="/j_spring_security_check"
+			login-page="/login.xhtml"
+			default-target-url="/"
+			authentication-failure-url="/login.xhtml" />
+		<logout logout-url="/logout"
+			logout-success-url="/" />
+	
+</http>
+
+<authentication-provider>
+	<!-- 
+	<user-service>
+		<user name="admin" password="vacallo"
+		authorities="ROLE_ADMIN,ROLE_USER" />
+		<user name ="user1" password="1111" authorities="ROLE_USER" />
+	</user-service>
+-->
+<password-encoder hash="md5" />
+<jdbc-user-service data-source-ref="dataSource" cache-ref="userCache" /> 
+
+</authentication-provider>
+<beans:bean id="userDetailsService" class="org.springframework.security.userdetails.jdbc.JdbcDaoImpl">
+   <beans:property name="dataSource" ref="dataSource"/>
+</beans:bean>
+
+<beans:bean id="userCache" class="org.springframework.security.providers.dao.cache.EhCacheBasedUserCache"> 
+<beans:property name="cache" ref="userEhCache" /> 
+</beans:bean> 
+
+<beans:bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" /> 
+
+
+<beans:bean id="userEhCache" 
+class="org.springframework.cache.ehcache.EhCacheFactoryBean"> 
+<beans:property name="cacheManager" ref="cacheManager"/> 
+<beans:property name="cacheName" value="userCache" /> 
+</beans:bean>
+
+
+ 
+
+ 
+</beans:beans>
